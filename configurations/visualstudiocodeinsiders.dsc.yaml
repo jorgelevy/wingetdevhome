@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+
+properties:
+  resources:
+    # Dev Tools
+    - resource: Microsoft.Windows.Developer/DeveloperMode
+      directives:
+        description: Enable Developer Mode
+        allowPrerelease: true
+      settings:
+        Ensure: Present
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: VisualStudioCodeInsiders
+      directives:
+        description: Install Visual Studio Code (Insiders)
+        allowPrerelease: true
+      settings:
+        id: Microsoft.VisualStudioCode.Insiders
+        source: winget
+  configurationVersion: 0.2.0
