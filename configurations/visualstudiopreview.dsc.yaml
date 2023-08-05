@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+
+properties:
+  resources:
+    # Dev Tools
+    - resource: Microsoft.Windows.Developer/DeveloperMode
+      directives:
+        description: Enable Developer Mode
+        allowPrerelease: true
+      settings:
+        Ensure: Present
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: vsPackage
+      directives:
+        description: Install Visual Studio 2022 (Preview)
+        allowPrerelease: true
+      settings:
+        id: Microsoft.VisualStudio.2022.Enterprise.Preview
+        source: winget
+    - resource: Microsoft.VisualStudio.DSC/VSComponents
+      dependsOn:
+        - vsPackage
+      directives:
+        description: Install required VS workloads
+        allowPrerelease: true
+      settings:
+        productId: Microsoft.VisualStudio.Product.Enterprise
+        channelId: VisualStudio.17.Preview             
+        components:
+          - Microsoft.VisualStudio.Workload.CoreEditor
+          - Microsoft.VisualStudio.Workload.NetWeb # ASP.NET and web development
+          - Microsoft.VisualStudio.Workload.Azure # Azure development
+          - Microsoft.VisualStudio.Workload.Python #Python development
+          - Microsoft.VisualStudio.Workload.Node # Node.js development
+          - Microsoft.VisualStudio.Workload.NetCrossPlat # .NET Multi-platform App UI development
+          - Microsoft.VisualStudio.Workload.ManagedDesktop #.NET desktop development
+          - Microsoft.VisualStudio.Workload.Universal # Universal Windows Platform development
+          - Microsoft.VisualStudio.Workload.Data # Azure development
+          - Microsoft.VisualStudio.Workload.DataScience # Data science and analytical applications
+          - Microsoft.VisualStudio.Workload.VisualStudioExtension # Visual Studio extension development
+          - Microsoft.VisualStudio.Workload.Office # Office/SharePoint development
+          #- Microsoft.VisualStudio.Workload.ManagedGame # Game development with Unity
+          #- Microsoft.VisualStudio.Workload.NativeCrossPlat # Linux and embedded development with C++
+          #- Microsoft.VisualStudio.Workload.NativeDesktop #Desktop development with C++
+          #- Microsoft.VisualStudio.Workload.NativeGame # Game development with C++
+          #- Microsoft.VisualStudio.Workload.NativeMobile # Mobile development with C++
+          #- Microsoft.VisualStudio.Component.IntelliCode
+          #- Microsoft.VisualStudio.Component.LiveUnitTesting
+  configurationVersion: 0.2.0

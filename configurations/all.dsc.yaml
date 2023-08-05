@@ -1,0 +1,311 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+
+properties:
+  resources:
+    # Dev Tools
+    - resource: Microsoft.Windows.Developer/DeveloperMode
+      directives:
+        description: Enable Developer Mode
+        allowPrerelease: true
+      settings:
+        Ensure: Present
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: vsPackage
+      directives:
+        description: Install Visual Studio 2022 (Preview)
+        allowPrerelease: true
+      settings:
+        id: Microsoft.VisualStudio.2022.Enterprise.Preview
+        source: winget
+    #- resource: Microsoft.WinGet.DSC/WinGetPackage
+    #  directives:
+    #    description: Install .NET SDK 8.0 (Preview)
+    #    allowPrerelease: true
+    #  settings:
+    #    id: Microsoft.DotNet.SDK.Preview
+    #    source: winget
+    - resource: Microsoft.VisualStudio.DSC/VSComponents
+      dependsOn:
+        - vsPackage
+      directives:
+        description: Install required VS workloads
+        allowPrerelease: true
+      settings:
+        productId: Microsoft.VisualStudio.Product.Enterprise
+        channelId: VisualStudio.17.Preview             
+        components:
+          - Microsoft.VisualStudio.Workload.CoreEditor
+          - Microsoft.VisualStudio.Workload.NetWeb # ASP.NET and web development
+          - Microsoft.VisualStudio.Workload.Azure # Azure development
+          - Microsoft.VisualStudio.Workload.Python #Python development
+          - Microsoft.VisualStudio.Workload.Node # Node.js development
+          - Microsoft.VisualStudio.Workload.NetCrossPlat # .NET Multi-platform App UI development
+          - Microsoft.VisualStudio.Workload.ManagedDesktop #.NET desktop development
+          - Microsoft.VisualStudio.Workload.Universal # Universal Windows Platform development
+          - Microsoft.VisualStudio.Workload.Data # Azure development
+          - Microsoft.VisualStudio.Workload.DataScience # Data science and analytical applications
+          - Microsoft.VisualStudio.Workload.VisualStudioExtension # Visual Studio extension development
+          - Microsoft.VisualStudio.Workload.Office # Office/SharePoint development
+          #- Microsoft.VisualStudio.Workload.ManagedGame # Game development with Unity
+          #- Microsoft.VisualStudio.Workload.NativeCrossPlat # Linux and embedded development with C++
+          #- Microsoft.VisualStudio.Workload.NativeDesktop #Desktop development with C++
+          #- Microsoft.VisualStudio.Workload.NativeGame # Game development with C++
+          #- Microsoft.VisualStudio.Workload.NativeMobile # Mobile development with C++
+          #- Microsoft.VisualStudio.Component.IntelliCode
+          #- Microsoft.VisualStudio.Component.LiveUnitTesting
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: VisualStudioCodeInsiders
+      directives:
+        description: Install Visual Studio Code (Insiders)
+        allowPrerelease: true
+      settings:
+        id: Microsoft.VisualStudioCode.Insiders
+        source: winget
+    # Terminal
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: WindowsTerminalPreview
+      directives:
+        description: Install Windows Terminal (Preview)
+        allowPrerelease: true
+      settings:
+        id: Microsoft.WindowsTerminal.Preview
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: PowerShellPreview
+      directives:
+        description: Install PowerShell (Preview)
+        allowPrerelease: true
+      settings:
+        id: Microsoft.PowerShell.Preview
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Git
+      directives:
+        description: Install Git
+        allowPrerelease: true
+      settings:
+        id: Git.Git
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: OhMyPosh
+      directives:
+        description: Install Oh-My-Posh
+        allowPrerelease: true
+      settings:
+        id: JanDeDobbeleer.OhMyPosh
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: AzureCLI
+      directives:
+        description: Install Azure CLI
+        allowPrerelease: true
+      settings:
+        id: Microsoft.AzureCLI
+        source: winget
+    # Node Js
+    #- resource: Microsoft.WinGet.DSC/WinGetPackage
+    #  id: npm
+    #  directives:
+    #    description: Install Node JS
+    #    allowPrerelease: true
+    #  settings:
+    #    id: OpenJS.NodeJS
+    #    source: winget
+    #- resource: NpmDsc/NpmInstall
+    #  directives:
+    #    description: Install all package dependencies
+    #    allowPrerelease: true
+    #  settings:
+    #    Ensure: 'Present'
+    #    PackageDirectory: '${WinGetConfigRoot}\..\'
+    #- resource: NpmDsc/NpmPackage
+    #  directives:
+    #    description: Install angular/cli globally
+    #    allowPrerelease: true
+    #  settings:
+    #    Name: '@angular/cli'
+    #    Global: true
+    #    Ensure: 'Present'
+    #    PackageDirectory: '${WinGetConfigRoot}\..\'
+    #- resource: NpmDsc/NpmPackage
+    #  directives:
+    #    description: Install azure-functions-core-tools globally
+    #    allowPrerelease: true
+    #  settings:
+    #    Name: 'azure-functions-core-tools@4'
+    #    Global: true
+    #    Ensure: 'Present'
+    #    PackageDirectory: '${WinGetConfigRoot}\..\'
+    #- resource: NpmDsc/NpmPackage
+    #  directives:
+    #    description: Install azure/static-web-apps-cli globally
+    #    allowPrerelease: true
+    #  settings:
+    #    Name: '@azure/static-web-apps-cli'
+    #    Global: true
+    #    Ensure: 'Present'
+    #    PackageDirectory: '${WinGetConfigRoot}\..\'
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: NVMforWindows
+      directives:
+        description: Install NVM for Windows
+        allowPrerelease: true
+      settings:
+        id: CoreyButler.NVMforWindows
+        source: winget
+    # Apps Misc
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Notepad++
+      directives:
+        description: Install Notepad++
+        allowPrerelease: true
+      settings:
+        id: Notepad++.Notepad++
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: WinRAR
+      directives:
+        description: Install RARLab WinRAR
+        allowPrerelease: true
+      settings:
+        id: RARLab.WinRAR
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: ZoomIt
+      directives:
+        description: Install ZoomIt
+        allowPrerelease: true
+      settings:
+        id: Microsoft.Sysinternals.ZoomIt
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: WinMerge
+      directives:
+        description: Install Win Merge
+        allowPrerelease: true
+      settings:
+        id: WinMerge.WinMerge
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: AdobeAcrobatReader
+      directives:
+        description: Install Adobe Acrobat Reader
+        allowPrerelease: true
+      settings:
+        id: Adobe.Acrobat.Reader.64-bit
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: ServiceBusExplorer
+      directives:
+        description: Install Service Bus Explorer
+        allowPrerelease: true
+      settings:
+        id: paolosalvatori.ServiceBusExplorer
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: AzureStorageExplorer
+      directives:
+        description: Install Azure Storage Explorer
+        allowPrerelease: true
+      settings:
+        id: Microsoft.Azure.StorageExplorer
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: PowerToys
+      directives:
+        description: Install Power Toys
+        allowPrerelease: true
+      settings:
+        id: Microsoft.PowerToys
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Postman
+      directives:
+        description: Install Postman
+        allowPrerelease: true
+      settings:
+        id: Postman.Postman
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Discord
+      directives:
+        description: Install Discord
+        allowPrerelease: true
+      settings:
+        id: Discord.Discord
+        source: winget
+    #- resource: microsoft.winget.dsc/wingetpackage
+    #  id: telegramdesktop
+    #  directives:
+    #    description: install telegram desktop
+    #    allowprerelease: true
+    #  settings:
+    #    id: Telegram.TelegramDesktop
+    #    source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Chrome
+      directives:
+        description: Install Chrome
+        allowPrerelease: true
+      settings:
+        id: Google.Chrome
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: WondershareFilmora
+      directives:
+        description: Install Wondershare Filmora
+        allowPrerelease: true
+      settings:
+        id: Wondershare.Filmora
+        source: winget
+    #- resource: Microsoft.WinGet.DSC/WinGetPackage
+    #  id: OBSStudio
+    #  directives:
+    #    description: Install OBSStudio
+    #    allowPrerelease: true
+    #  settings:
+    #    id: OBSProject.OBSStudio
+    #    source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: BingWallpaper
+      directives:
+        description: Install Bing Wallpaper
+        allowPrerelease: true
+      settings:
+        id: Microsoft.BingWallpaper
+        source: winget
+    # Database
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: SQLServer2022Developer
+      directives:
+        description: Install SQLServer 2022 Developer
+        allowPrerelease: true
+      settings:
+        id: Microsoft.SQLServer.2022.Developer
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: SQLServerManagementStudio
+      directives:
+        description: Install SQL Server Management Studio
+        allowPrerelease: true
+      settings:
+        id: Microsoft.SQLServerManagementStudio
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: AzureDataStudio
+      directives:
+        description: Install Azure Data Studio
+        allowPrerelease: true
+      settings:
+        id: Microsoft.AzureDataStudio.Insiders
+        source: winget
+    # Docker
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Docker
+      directives:
+        description: Install Docker
+        allowPrerelease: true
+      settings:
+        id: Docker.DockerDesktop
+        source: winget
+  configurationVersion: 0.2.0
