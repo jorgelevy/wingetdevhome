@@ -51,9 +51,11 @@ properties:
           #- Microsoft.VisualStudio.Workload.NativeDesktop #Desktop development with C++
           #- Microsoft.VisualStudio.Workload.NativeGame # Game development with C++
           #- Microsoft.VisualStudio.Workload.NativeMobile # Mobile development with C++
-          #- Microsoft.VisualStudio.Component.IntelliCode
-          #- Microsoft.VisualStudio.Component.LiveUnitTesting
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+          ## Components
+          - Microsoft.VisualStudio.Component.IntelliCode
+          - Microsoft.VisualStudio.Component.LiveUnitTesting
+          - Microsoft.NetCore.Component.Runtime.6.0
+          - Microsoft.NetCore.Component.Runtime.7.0
       id: VisualStudioCodeInsiders
       directives:
         description: Install Visual Studio Code (Insiders)
