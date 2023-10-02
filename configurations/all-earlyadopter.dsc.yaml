@@ -56,6 +56,7 @@ properties:
           - Microsoft.VisualStudio.Component.LiveUnitTesting
           - Microsoft.NetCore.Component.Runtime.6.0
           - Microsoft.NetCore.Component.Runtime.7.0
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: VisualStudioCodeInsiders
       directives:
         description: Install Visual Studio Code (Insiders)
