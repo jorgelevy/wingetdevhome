@@ -25,7 +25,7 @@ properties:
         allowPrerelease: true
       settings:
         productId: Microsoft.VisualStudio.Product.Enterprise
-        channelId: VisualStudio.17
+        channelId: VisualStudio.17.Release
         components:
           - Microsoft.VisualStudio.Workload.CoreEditor
           - Microsoft.VisualStudio.Workload.NetWeb # ASP.NET and web development
