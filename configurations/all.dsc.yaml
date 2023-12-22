@@ -3,25 +3,26 @@
 properties:
   resources:
     # Dev Tools
-    - resource: Microsoft.Windows.Developer/DeveloperMode
+    - resource: Microsoft.Windows.Developer/DeveloperMode # Enable Developer Mode
       directives:
         description: Enable Developer Mode
         allowPrerelease: true
       settings:
         Ensure: Present
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Visual Studio Enterprise 2022
+      # https://learn.microsoft.com/en-us/visualstudio/install/workload-and-component-ids
       id: vsPackage
       directives:
-        description: Install Visual Studio 2022
+        description: Install Visual Studio Enterprise 2022
         allowPrerelease: true
       settings:
         id: Microsoft.VisualStudio.2022.Enterprise
         source: winget
-    - resource: Microsoft.VisualStudio.DSC/VSComponents
+    - resource: Microsoft.VisualStudio.DSC/VSComponents # Install Visual Studio Enterprise workloads
       dependsOn:
         - vsPackage
       directives:
-        description: Install required VS workloads
+        description: Install Visual Studio Enterprise workloads
         allowPrerelease: true
       settings:
         productId: Microsoft.VisualStudio.Product.Enterprise
@@ -49,7 +50,8 @@ properties:
           - Microsoft.VisualStudio.Component.LiveUnitTesting
           - Microsoft.NetCore.Component.Runtime.6.0
           - Microsoft.NetCore.Component.Runtime.7.0
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+          - Microsoft.NetCore.Component.Runtime.8.0
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Visual Studio Code
       id: VisualStudioCodeInsiders
       directives:
         description: Install Visual Studio Code
@@ -58,7 +60,7 @@ properties:
         id: Microsoft.VisualStudioCode
         source: winget
     # Terminal
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Windows Terminal
       id: WindowsTerminal
       directives:
         description: Install Windows Terminal
@@ -66,7 +68,7 @@ properties:
       settings:
         id: Microsoft.WindowsTerminal
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install PowerShell
       id: PowerShell
       directives:
         description: Install PowerShell
@@ -74,7 +76,7 @@ properties:
       settings:
         id: Microsoft.PowerShell
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Git
       id: Git
       directives:
         description: Install Git
@@ -82,7 +84,7 @@ properties:
       settings:
         id: Git.Git
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Oh-My-Posh
       id: OhMyPosh
       directives:
         description: Install Oh-My-Posh
@@ -90,7 +92,7 @@ properties:
       settings:
         id: JanDeDobbeleer.OhMyPosh
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Azure CLI
       id: AzureCLI
       directives:
         description: Install Azure CLI
@@ -141,7 +143,7 @@ properties:
     #    Global: true
     #    Ensure: 'Present'
     #    PackageDirectory: '${WinGetConfigRoot}\..\'
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install NVM for Windows
       id: NVMforWindows
       directives:
         description: Install NVM for Windows
@@ -149,8 +151,16 @@ properties:
       settings:
         id: CoreyButler.NVMforWindows
         source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Ruby+Devkit 3.2.X
+      id: NVMforWindows
+      directives:
+        description: Install Ruby+Devkit 3.2.X
+        allowPrerelease: true
+      settings:
+        id: RubyInstallerTeam.RubyWithDevKit.3.2
+        source: winget
     # Apps Misc
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Notepad++
       id: Notepad++
       directives:
         description: Install Notepad++
@@ -158,7 +168,7 @@ properties:
       settings:
         id: Notepad++.Notepad++
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install RARLab WinRAR
       id: WinRAR
       directives:
         description: Install RARLab WinRAR
@@ -166,7 +176,7 @@ properties:
       settings:
         id: RARLab.WinRAR
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install ZoomIt
       id: ZoomIt
       directives:
         description: Install ZoomIt
@@ -174,7 +184,7 @@ properties:
       settings:
         id: Microsoft.Sysinternals.ZoomIt
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Win Merge
       id: WinMerge
       directives:
         description: Install Win Merge
@@ -182,7 +192,7 @@ properties:
       settings:
         id: WinMerge.WinMerge
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Adobe Acrobat Reader
       id: AdobeAcrobatReader
       directives:
         description: Install Adobe Acrobat Reader
@@ -190,7 +200,7 @@ properties:
       settings:
         id: Adobe.Acrobat.Reader.64-bit
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Service Bus Explorer
       id: ServiceBusExplorer
       directives:
         description: Install Service Bus Explorer
@@ -198,7 +208,7 @@ properties:
       settings:
         id: paolosalvatori.ServiceBusExplorer
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Azure Storage Explorer
       id: AzureStorageExplorer
       directives:
         description: Install Azure Storage Explorer
@@ -206,7 +216,7 @@ properties:
       settings:
         id: Microsoft.Azure.StorageExplorer
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Power Toys
       id: PowerToys
       directives:
         description: Install Power Toys
@@ -214,7 +224,7 @@ properties:
       settings:
         id: Microsoft.PowerToys
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Postman
       id: Postman
       directives:
         description: Install Postman
@@ -222,7 +232,7 @@ properties:
       settings:
         id: Postman.Postman
         source: winget
-    # - resource: Microsoft.WinGet.DSC/WinGetPackage
+    # - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Discord
     #   id: Discord
     #   directives:
     #     description: Install Discord
@@ -230,15 +240,15 @@ properties:
     #   settings:
     #     id: Discord.Discord
     #     source: winget
-    # - resource: microsoft.winget.dsc/wingetpackage
+    # - resource: microsoft.winget.dsc/wingetpackage # Install telegram desktop
     #   id: telegramdesktop
     #   directives:
-    #     description: install telegram desktop
+    #     description: Install telegram desktop
     #     allowprerelease: true
     #   settings:
     #     id: Telegram.TelegramDesktop
     #     source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Chrome
       id: Chrome
       directives:
         description: Install Chrome
@@ -246,7 +256,7 @@ properties:
       settings:
         id: Google.Chrome
         source: winget
-    #- resource: Microsoft.WinGet.DSC/WinGetPackage
+    #- resource: Microsoft.WinGet.DSC/WinGetPackage # Install Wondershare Filmora
     #  id: WondershareFilmora
     #  directives:
     #    description: Install Wondershare Filmora
@@ -254,7 +264,7 @@ properties:
     #  settings:
     #    id: Wondershare.Filmora
     #    source: winget
-    #- resource: Microsoft.WinGet.DSC/WinGetPackage
+    #- resource: Microsoft.WinGet.DSC/WinGetPackage # Install OBSStudio
     #  id: OBSStudio
     #  directives:
     #    description: Install OBSStudio
@@ -262,7 +272,7 @@ properties:
     #  settings:
     #    id: OBSProject.OBSStudio
     #    source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Bing Wallpaper
       id: BingWallpaper
       directives:
         description: Install Bing Wallpaper
@@ -271,7 +281,7 @@ properties:
         id: Microsoft.BingWallpaper
         source: winget
     # Database
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install SQLServer 2022 Developer
       id: SQLServer2022Developer
       directives:
         description: Install SQLServer 2022 Developer
@@ -279,7 +289,7 @@ properties:
       settings:
         id: Microsoft.SQLServer.2022.Developer
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install SQL Server Management Studio
       id: SQLServerManagementStudio
       directives:
         description: Install SQL Server Management Studio
@@ -287,7 +297,7 @@ properties:
       settings:
         id: Microsoft.SQLServerManagementStudio
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Azure Data Studio
       id: AzureDataStudio
       directives:
         description: Install Azure Data Studio
@@ -296,7 +306,7 @@ properties:
         id: Microsoft.AzureDataStudio.Insiders
         source: winget
     # Docker
-    - resource: Microsoft.WinGet.DSC/WinGetPackage
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Docker
       id: Docker
       directives:
         description: Install Docker
