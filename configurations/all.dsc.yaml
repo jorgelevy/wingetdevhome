@@ -100,49 +100,6 @@ properties:
       settings:
         id: Microsoft.AzureCLI
         source: winget
-    # Node Js
-    #- resource: Microsoft.WinGet.DSC/WinGetPackage
-    #  id: npm
-    #  directives:
-    #    description: Install Node JS
-    #    allowPrerelease: true
-    #  settings:
-    #    id: OpenJS.NodeJS
-    #    source: winget
-    #- resource: NpmDsc/NpmInstall
-    #  directives:
-    #    description: Install all package dependencies
-    #    allowPrerelease: true
-    #  settings:
-    #    Ensure: 'Present'
-    #    PackageDirectory: '${WinGetConfigRoot}\..\'
-    #- resource: NpmDsc/NpmPackage
-    #  directives:
-    #    description: Install angular/cli globally
-    #    allowPrerelease: true
-    #  settings:
-    #    Name: '@angular/cli'
-    #    Global: true
-    #    Ensure: 'Present'
-    #    PackageDirectory: '${WinGetConfigRoot}\..\'
-    #- resource: NpmDsc/NpmPackage
-    #  directives:
-    #    description: Install azure-functions-core-tools globally
-    #    allowPrerelease: true
-    #  settings:
-    #    Name: 'azure-functions-core-tools@4'
-    #    Global: true
-    #    Ensure: 'Present'
-    #    PackageDirectory: '${WinGetConfigRoot}\..\'
-    #- resource: NpmDsc/NpmPackage
-    #  directives:
-    #    description: Install azure/static-web-apps-cli globally
-    #    allowPrerelease: true
-    #  settings:
-    #    Name: '@azure/static-web-apps-cli'
-    #    Global: true
-    #    Ensure: 'Present'
-    #    PackageDirectory: '${WinGetConfigRoot}\..\'
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install NVM for Windows
       id: NVMforWindows
       directives:
@@ -232,22 +189,14 @@ properties:
       settings:
         id: Postman.Postman
         source: winget
-    # - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Discord
-    #   id: Discord
-    #   directives:
-    #     description: Install Discord
-    #     allowPrerelease: true
-    #   settings:
-    #     id: Discord.Discord
-    #     source: winget
-    # - resource: microsoft.winget.dsc/wingetpackage # Install telegram desktop
-    #   id: telegramdesktop
-    #   directives:
-    #     description: Install telegram desktop
-    #     allowprerelease: true
-    #   settings:
-    #     id: Telegram.TelegramDesktop
-    #     source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Discord
+      id: Discord
+      directives:
+        description: Install Discord
+        allowPrerelease: true
+      settings:
+        id: Discord.Discord
+        source: winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Chrome
       id: Chrome
       directives:
@@ -256,22 +205,6 @@ properties:
       settings:
         id: Google.Chrome
         source: winget
-    #- resource: Microsoft.WinGet.DSC/WinGetPackage # Install Wondershare Filmora
-    #  id: WondershareFilmora
-    #  directives:
-    #    description: Install Wondershare Filmora
-    #    allowPrerelease: true
-    #  settings:
-    #    id: Wondershare.Filmora
-    #    source: winget
-    #- resource: Microsoft.WinGet.DSC/WinGetPackage # Install OBSStudio
-    #  id: OBSStudio
-    #  directives:
-    #    description: Install OBSStudio
-    #    allowPrerelease: true
-    #  settings:
-    #    id: OBSProject.OBSStudio
-    #    source: winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Bing Wallpaper
       id: BingWallpaper
       directives:
@@ -314,4 +247,81 @@ properties:
       settings:
         id: Docker.DockerDesktop
         source: winget
+    # Terminal
+    # Node Js
+    #- resource: Microsoft.WinGet.DSC/WinGetPackage
+    #  id: npm
+    #  directives:
+    #    description: Install Node JS
+    #    allowPrerelease: true
+    #  settings:
+    #    id: OpenJS.NodeJS
+    #    source: winget
+    #- resource: NpmDsc/NpmInstall
+    #  directives:
+    #    description: Install all package dependencies
+    #    allowPrerelease: true
+    #  settings:
+    #    Ensure: 'Present'
+    #    PackageDirectory: '${WinGetConfigRoot}\..\'
+    #- resource: NpmDsc/NpmPackage
+    #  directives:
+    #    description: Install angular/cli globally
+    #    allowPrerelease: true
+    #  settings:
+    #    Name: '@angular/cli'
+    #    Global: true
+    #    Ensure: 'Present'
+    #    PackageDirectory: '${WinGetConfigRoot}\..\'
+    #- resource: NpmDsc/NpmPackage
+    #  directives:
+    #    description: Install azure-functions-core-tools globally
+    #    allowPrerelease: true
+    #  settings:
+    #    Name: 'azure-functions-core-tools@4'
+    #    Global: true
+    #    Ensure: 'Present'
+    #    PackageDirectory: '${WinGetConfigRoot}\..\'
+    #- resource: NpmDsc/NpmPackage
+    #  directives:
+    #    description: Install azure/static-web-apps-cli globally
+    #    allowPrerelease: true
+    #  settings:
+    #    Name: '@azure/static-web-apps-cli'
+    #    Global: true
+    #    Ensure: 'Present'
+    #    PackageDirectory: '${WinGetConfigRoot}\..\'
+    # Apps Misc
+    # - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Discord
+    #   id: Discord
+    #   directives:
+    #     description: Install Discord
+    #     allowPrerelease: true
+    #   settings:
+    #     id: Discord.Discord
+    #     source: winget
+    # - resource: microsoft.winget.dsc/wingetpackage # Install telegram desktop
+    #   id: telegramdesktop
+    #   directives:
+    #     description: Install telegram desktop
+    #     allowprerelease: true
+    #   settings:
+    #     id: Telegram.TelegramDesktop
+    #     source: winget
+    #- resource: Microsoft.WinGet.DSC/WinGetPackage # Install Wondershare Filmora
+    #  id: WondershareFilmora
+    #  directives:
+    #    description: Install Wondershare Filmora
+    #    allowPrerelease: true
+    #  settings:
+    #    id: Wondershare.Filmora
+    #    source: winget
+    #- resource: Microsoft.WinGet.DSC/WinGetPackage # Install OBSStudio
+    #  id: OBSStudio
+    #  directives:
+    #    description: Install OBSStudio
+    #    allowPrerelease: true
+    #  settings:
+    #    id: OBSProject.OBSStudio
+    #    source: winget
   configurationVersion: 0.2.0

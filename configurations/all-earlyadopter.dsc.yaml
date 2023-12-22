@@ -10,6 +10,7 @@ properties:
       settings:
         Ensure: Present
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Visual Studio Enterprise 2022 (Preview)
+      # https://learn.microsoft.com/en-us/visualstudio/install/workload-and-component-ids
       id: vsPackage
       directives:
         description: Install Visual Studio Enterprise 2022 (Preview)
@@ -106,6 +107,14 @@ properties:
         allowPrerelease: true
       settings:
         id: CoreyButler.NVMforWindows
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Ruby+Devkit 3.2.X
+      id: NVMforWindows
+      directives:
+        description: Install Ruby+Devkit 3.2.X
+        allowPrerelease: true
+      settings:
+        id: RubyInstallerTeam.RubyWithDevKit.3.2
         source: winget
     # Apps Misc
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Notepad++
