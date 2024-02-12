@@ -109,7 +109,7 @@ properties:
         id: CoreyButler.NVMforWindows
         source: winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Ruby+Devkit 3.2.X
-      id: NVMforWindows
+      id: Ruby+Devkit
       directives:
         description: Install Ruby+Devkit 3.2.X
         allowPrerelease: true
