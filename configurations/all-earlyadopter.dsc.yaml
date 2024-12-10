@@ -48,9 +48,8 @@ properties:
           ## Components
           - Microsoft.VisualStudio.Component.IntelliCode
           - Microsoft.VisualStudio.Component.LiveUnitTesting
-          - Microsoft.NetCore.Component.Runtime.6.0
-          - Microsoft.NetCore.Component.Runtime.7.0
           - Microsoft.NetCore.Component.Runtime.8.0
+          - Microsoft.NetCore.Component.Runtime.9.0
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Visual Studio Code (Insiders)
       id: VisualStudioCodeInsiders
       directives:
