@@ -246,14 +246,6 @@ properties:
       settings:
         id: Docker.DockerDesktop
         source: winget
-    ## Dev Tools
-    #- resource: Microsoft.WinGet.DSC/WinGetPackage # Install .NET SDK 9.0 (Preview)
-    #  directives:
-    #    description: Install .NET SDK 9.0 (Preview)
-    #    allowPrerelease: true
-    #  settings:
-    #    id: Microsoft.DotNet.SDK.Preview
-    #    source: winget
     ## Terminal
     #- resource: Microsoft.WinGet.DSC/WinGetPackage # Install Node JS
     #  id: npm
