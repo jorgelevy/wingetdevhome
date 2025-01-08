@@ -252,6 +252,14 @@ properties:
       settings:
         id: NickeManarin.ScreenToGif
         source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install PC Manager
+      id: PCManager
+      directives:
+        description: Install PC Manager
+        allowPrerelease: true
+      settings:
+        id: Microsoft.PCManager
+        source: winget
     # Database
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install SQLServer 2022 Developer
       id: SQLServer2022Developer
