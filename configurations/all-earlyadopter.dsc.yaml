@@ -212,6 +212,14 @@ properties:
       settings:
         id: Microsoft.BingWallpaper
         source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install DevToys
+      id: DevToys
+      directives:
+        description: Install DevToys
+        allowPrerelease: true
+      settings:
+        id: DevToys-app.DevToys
+        source: winget
     # Database
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install SQLServer 2022 Developer
       id: SQLServer2022Developer
