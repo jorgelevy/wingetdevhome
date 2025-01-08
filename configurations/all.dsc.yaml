@@ -48,9 +48,9 @@ properties:
           ## Components
           - Microsoft.VisualStudio.Component.IntelliCode
           - Microsoft.VisualStudio.Component.LiveUnitTesting
-          - Microsoft.NetCore.Component.Runtime.6.0
-          - Microsoft.NetCore.Component.Runtime.7.0
-          - Microsoft.NetCore.Component.Runtime.8.0
+          # - Microsoft.NetCore.Component.Runtime.6.0
+          # - Microsoft.NetCore.Component.Runtime.7.0
+          # - Microsoft.NetCore.Component.Runtime.8.0
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Visual Studio Code
       id: VisualStudioCodeInsiders
       directives:
@@ -58,6 +58,14 @@ properties:
         allowPrerelease: true
       settings:
         id: Microsoft.VisualStudioCode
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install NuGet
+      id: MicrosoftNuGet
+      directives:
+        description: Install NuGet
+        allowPrerelease: true
+      settings:
+        id: Microsoft.NuGet
         source: winget
     # Terminal
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Windows Terminal
@@ -107,6 +115,14 @@ properties:
         allowPrerelease: true
       settings:
         id: CoreyButler.NVMforWindows
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install PNPM for Windows
+      id: pnpm
+      directives:
+        description: Install PNPM for Windows
+        allowPrerelease: true
+      settings:
+        id: pnpm.pnpm
         source: winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Ruby+Devkit 3.2.X
       id: Ruby+Devkit
@@ -189,14 +205,6 @@ properties:
       settings:
         id: Postman.Postman
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Discord
-      id: Discord
-      directives:
-        description: Install Discord
-        allowPrerelease: true
-      settings:
-        id: Discord.Discord
-        source: winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Chrome
       id: Chrome
       directives:
@@ -212,6 +220,46 @@ properties:
         allowPrerelease: true
       settings:
         id: Microsoft.BingWallpaper
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install WhatsApp
+      id: WhatsApp
+      directives:
+        description: Install WhatsApp
+        allowPrerelease: true
+      settings:
+        id: 9NKSQGP7F2NH
+        source: msstore
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install DevToys
+      id: DevToys
+      directives:
+        description: Install DevToys
+        allowPrerelease: true
+      settings:
+        id: DevToys-app.DevToys
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install ScreenToGif
+      id: ScreenToGif
+      directives:
+        description: Install ScreenToGif
+        allowPrerelease: true
+      settings:
+        id: NickeManarin.ScreenToGif
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install ScreenToGif
+      id: ScreenToGif
+      directives:
+        description: Install ScreenToGif
+        allowPrerelease: true
+      settings:
+        id: NickeManarin.ScreenToGif
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install PC Manager
+      id: PCManager
+      directives:
+        description: Install PC Manager
+        allowPrerelease: true
+      settings:
+        id: Microsoft.PCManager
         source: winget
     # Database
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install SQLServer 2022 Developer
@@ -236,7 +284,15 @@ properties:
         description: Install Azure Data Studio
         allowPrerelease: true
       settings:
-        id: Microsoft.AzureDataStudio.Insiders
+        id: Microsoft.AzureDataStudio
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Power BI Report Builder
+      id: PowerBIReportBuilder
+      directives:
+        description: Install Power BI Report Builder
+        allowPrerelease: true
+      settings:
+        id: Microsoft.PowerBIReportBuilder
         source: winget
     # Docker
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Docker
@@ -247,51 +303,66 @@ properties:
       settings:
         id: Docker.DockerDesktop
         source: winget
-    # Terminal
-    # Node Js
-    #- resource: Microsoft.WinGet.DSC/WinGetPackage
-    #  id: npm
-    #  directives:
-    #    description: Install Node JS
-    #    allowPrerelease: true
-    #  settings:
-    #    id: OpenJS.NodeJS
-    #    source: winget
-    #- resource: NpmDsc/NpmInstall
-    #  directives:
-    #    description: Install all package dependencies
-    #    allowPrerelease: true
-    #  settings:
-    #    Ensure: 'Present'
-    #    PackageDirectory: '${WinGetConfigRoot}\..\'
-    #- resource: NpmDsc/NpmPackage
-    #  directives:
-    #    description: Install angular/cli globally
-    #    allowPrerelease: true
-    #  settings:
-    #    Name: '@angular/cli'
-    #    Global: true
-    #    Ensure: 'Present'
-    #    PackageDirectory: '${WinGetConfigRoot}\..\'
-    #- resource: NpmDsc/NpmPackage
-    #  directives:
-    #    description: Install azure-functions-core-tools globally
-    #    allowPrerelease: true
-    #  settings:
-    #    Name: 'azure-functions-core-tools@4'
-    #    Global: true
-    #    Ensure: 'Present'
-    #    PackageDirectory: '${WinGetConfigRoot}\..\'
-    #- resource: NpmDsc/NpmPackage
-    #  directives:
-    #    description: Install azure/static-web-apps-cli globally
-    #    allowPrerelease: true
-    #  settings:
-    #    Name: '@azure/static-web-apps-cli'
-    #    Global: true
-    #    Ensure: 'Present'
-    #    PackageDirectory: '${WinGetConfigRoot}\..\'
+    # # Terminal
+    # - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Node JS
+    #   id: NPM
+    #   directives:
+    #     description: Install Node JS
+    #     allowPrerelease: true
+    #   settings:
+    #     id: OpenJS.NodeJS
+    #     source: winget
+    # - resource: NpmDsc/NpmInstall # Install all package dependencies
+    #   directives:
+    #     description: Install all package dependencies
+    #     allowPrerelease: true
+    #   settings:
+    #     Ensure: 'Present'
+    #     PackageDirectory: '${WinGetConfigRoot}\..\'
+    # - resource: NpmDsc/NpmPackage # Install angular/cli globally
+    #   directives:
+    #     description: Install angular/cli globally
+    #     allowPrerelease: true
+    #   settings:
+    #     Name: '@angular/cli'
+    #     Global: true
+    #     Ensure: 'Present'
+    #     PackageDirectory: '${WinGetConfigRoot}\..\'
+    # - resource: NpmDsc/NpmPackage # Install azure-functions-core-tools globally
+    #   directives:
+    #     description: Install azure-functions-core-tools globally
+    #     allowPrerelease: true
+    #   settings:
+    #     Name: 'azure-functions-core-tools@4'
+    #     Global: true
+    #     Ensure: 'Present'
+    #     PackageDirectory: '${WinGetConfigRoot}\..\'
+    # - resource: NpmDsc/NpmPackage # Install azure/static-web-apps-cli globally
+    #   directives:
+    #     description: Install azure/static-web-apps-cli globally
+    #     allowPrerelease: true
+    #   settings:
+    #     Name: '@azure/static-web-apps-cli'
+    #     Global: true
+    #     Ensure: 'Present'
+    #     PackageDirectory: '${WinGetConfigRoot}\..\'
+    # - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Deno
+    #   id: Deno
+    #   directives:
+    #     description: Install Deno
+    #     allowPrerelease: true
+    #   settings:
+    #     id: DenoLand.Deno
+    #     source: winget
     # Apps Misc
+    # - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Rufus
+    #   id: Rufus
+    #   directives:
+    #     description: Install Rufus
+    #     allowPrerelease: true
+    #   settings:
+    #     id: Rufus.Rufus
+    #     source: winget
     # - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Discord
     #   id: Discord
     #   directives:
@@ -301,27 +372,36 @@ properties:
     #     id: Discord.Discord
     #     source: winget
     # - resource: microsoft.winget.dsc/wingetpackage # Install telegram desktop
-    #   id: telegramdesktop
+    #   id: TelegramDesktop
     #   directives:
     #     description: Install telegram desktop
     #     allowprerelease: true
     #   settings:
     #     id: Telegram.TelegramDesktop
     #     source: winget
-    #- resource: Microsoft.WinGet.DSC/WinGetPackage # Install Wondershare Filmora
-    #  id: WondershareFilmora
-    #  directives:
-    #    description: Install Wondershare Filmora
-    #    allowPrerelease: true
-    #  settings:
-    #    id: Wondershare.Filmora
-    #    source: winget
-    #- resource: Microsoft.WinGet.DSC/WinGetPackage # Install OBSStudio
-    #  id: OBSStudio
-    #  directives:
-    #    description: Install OBSStudio
-    #    allowPrerelease: true
-    #  settings:
-    #    id: OBSProject.OBSStudio
-    #    source: winget
+    # - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Wondershare Filmora
+    #   id: WondershareFilmora
+    #   directives:
+    #     description: Install Wondershare Filmora
+    #     allowPrerelease: true
+    #   settings:
+    #     id: Wondershare.Filmora
+    #     source: winget
+    # - resource: Microsoft.WinGet.DSC/WinGetPackage # Install OBSStudio
+    #   id: OBSStudio
+    #   directives:
+    #     description: Install OBSStudio
+    #     allowPrerelease: true
+    #   settings:
+    #     id: OBSProject.OBSStudio
+    #     source: winget
+    # # Database
+    # - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Azure Data Studio (Insiders)
+    #   id: AzureDataStudioInsiders
+    #   directives:
+    #     description: Install Azure Data Studio
+    #     allowPrerelease: true
+    #   settings:
+    #     id: Microsoft.AzureDataStudio.Insiders
+    #     source: winget
   configurationVersion: 0.2.0
