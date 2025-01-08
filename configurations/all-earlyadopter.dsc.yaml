@@ -244,14 +244,6 @@ properties:
       settings:
         id: NickeManarin.ScreenToGif
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install ScreenToGif
-      id: ScreenToGif
-      directives:
-        description: Install ScreenToGif
-        allowPrerelease: true
-      settings:
-        id: NickeManarin.ScreenToGif
-        source: winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install PC Manager
       id: PCManager
       directives:
