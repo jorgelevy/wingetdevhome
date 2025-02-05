@@ -148,14 +148,14 @@ properties:
       settings:
         id: RARLab.WinRAR
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install ZoomIt
-      id: ZoomIt
-      directives:
-        description: Install ZoomIt
-        allowPrerelease: true
-      settings:
-        id: Microsoft.Sysinternals.ZoomIt
-        source: winget
+    # - resource: Microsoft.WinGet.DSC/WinGetPackage # Install ZoomIt
+    #   id: ZoomIt
+    #   directives:
+    #     description: Install ZoomIt
+    #     allowPrerelease: true
+    #   settings:
+    #     id: Microsoft.Sysinternals.ZoomIt
+    #     source: winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Win Merge
       id: WinMerge
       directives:
