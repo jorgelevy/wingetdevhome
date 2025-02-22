@@ -269,14 +269,6 @@ properties:
       settings:
         id: Microsoft.SQLServerManagementStudio.Preview
         source: winget
-    - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Azure Data Studio - Insiders
-      id: AzureDataStudioInsiders
-      directives:
-        description: Install Azure Data Studio - Insiders
-        allowPrerelease: true
-      settings:
-        id: Microsoft.AzureDataStudio.Insiders
-        source: winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Power BI Report Builder
       id: PowerBIReportBuilder
       directives:
@@ -391,6 +383,14 @@ properties:
     #   id: AzureDataStudioInsiders
     #   directives:
     #     description: Install Azure Data Studio
+    #     allowPrerelease: true
+    #   settings:
+    #     id: Microsoft.AzureDataStudio.Insiders
+    #     source: winget
+    # - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Azure Data Studio - Insiders
+    #   id: AzureDataStudioInsiders
+    #   directives:
+    #     description: Install Azure Data Studio - Insiders
     #     allowPrerelease: true
     #   settings:
     #     id: Microsoft.AzureDataStudio.Insiders
