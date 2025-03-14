@@ -26,7 +26,7 @@ properties:
         allowPrerelease: true
       settings:
         productId: Microsoft.VisualStudio.Product.Enterprise
-        channelId: VisualStudio.17.Preview             
+        channelId: VisualStudio.17.Preview
         components:
           - Microsoft.VisualStudio.Workload.CoreEditor
           - Microsoft.VisualStudio.Workload.NetWeb # ASP.NET and web development
@@ -383,14 +383,6 @@ properties:
     #   id: AzureDataStudioInsiders
     #   directives:
     #     description: Install Azure Data Studio
-    #     allowPrerelease: true
-    #   settings:
-    #     id: Microsoft.AzureDataStudio.Insiders
-    #     source: winget
-    # - resource: Microsoft.WinGet.DSC/WinGetPackage # Install Azure Data Studio - Insiders
-    #   id: AzureDataStudioInsiders
-    #   directives:
-    #     description: Install Azure Data Studio - Insiders
     #     allowPrerelease: true
     #   settings:
     #     id: Microsoft.AzureDataStudio.Insiders
